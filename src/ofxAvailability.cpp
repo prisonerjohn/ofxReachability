@@ -44,7 +44,7 @@ void ofxAvailability::exit()
 void ofxAvailability::threadedFunction()
 {
     while (isThreadRunning()) {
-        if (system(("ping -q -c5 " + _pingAddress + " > /dev/null").c_str())) {
+        if (system(("ping -q -c5 " + _pingAddress + " > /dev/null 2>&1").c_str())) {
             // Not connected.
             if (_bConnected) {
                 _bConnected = false;
