@@ -9,7 +9,7 @@ The Apple implementation uses [Reachability](https://github.com/tonymillion/Reac
 
 The Windows implementation is based on [this article](http://blogs.msdn.com/b/oldnewthing/archive/2010/04/19/9998139.aspx) by Raymond Chen.
 
-Other platforms use the ping implementation, where I just ping google.com at regular intervals. Specific platform implementations are welcome!
+Other platforms use the ping implementation, where I just ping [google.com](http://google.com) at regular intervals. Specific platform implementations are welcome!
 
 Installation
 ------------
