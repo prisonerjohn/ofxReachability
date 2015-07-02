@@ -167,6 +167,7 @@
     <ClCompile Include="..\src\ofxReachability.cpp" />
     <ClCompile Include="..\src\ofxReachabilityImpl.cpp" />
     <ClCompile Include="..\src\ofxReachabilityImplPing.cpp" />
+    <ClCompile Include="..\src\win32\ofxReachabilityImplWin.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="..\src\ofxReachability.h" />
     <ClInclude Include="..\src\ofxReachabilityImpl.h" />
     <ClInclude Include="..\src\ofxReachabilityImplPing.h" />
+    <ClInclude Include="..\src\win32\ofxReachabilityImplWin.h" />
     <ClInclude Include="src\ofApp.h" />
   </ItemGroup>
   <ItemGroup>

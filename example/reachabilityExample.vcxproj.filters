@@ -16,6 +16,9 @@
     <ClCompile Include="..\src\ofxReachabilityImplPing.cpp">
       <Filter>addons\ofxReachability\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\win32\ofxReachabilityImplWin.cpp">
+      <Filter>addons\ofxReachability\src\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="..\src\ofxReachabilityImplPing.h">
       <Filter>addons\ofxReachability\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\win32\ofxReachabilityImplWin.h">
+      <Filter>addons\ofxReachability\src\win32</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

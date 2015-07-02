@@ -9,7 +9,7 @@
 #include "ofxReachability.h"
 
 #if defined(OFX_REACHABILITY_WIN32)
-
+	#include "ofxReachabilityImplWin.h"
 #elif defined(OFX_REACHABILITY_APPLE)
     #include "ofxReachabilityImplApple.h"
 #else
@@ -25,7 +25,7 @@ ofxReachability::ofxReachability()
 : _impl(NULL)
 {
 #if defined(OFX_REACHABILITY_WIN32)
-    
+    _impl = new ofxReachabilityImplWin();
 #elif defined(OFX_REACHABILITY_APPLE)
     _impl = new ofxReachabilityImplApple();
 #else
