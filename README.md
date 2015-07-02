@@ -13,9 +13,11 @@ Other platforms use the ping implementation, where I just ping [google.com](http
 
 Installation
 ------------
-Just drop the `ofxReachability` folder into `openFrameworks/addons/`. 
+Drop the `ofxReachability` folder into `openFrameworks/addons/`.
 
 When adding the files to your project, make sure to include the "apple" subfolder on Mac / iOS, and the "win32" subfolder on Windows.
+
+If you're on Mac, you'll also need to add `SystemConfiguration.framework` in the linking build phase.
 
 Compatibility
 ------------
