@@ -8,6 +8,12 @@
 
 #pragma once
 
+#if defined( __WIN32__ ) || defined( _WIN32 )
+    #define OFX_REACHABILITY_WIN32
+#elif defined( __APPLE_CC__)
+    #define OFX_REACHABILITY_APPLE
+#endif
+
 #include "ofMain.h"
 #include "ofxReachabilityImpl.h"
 

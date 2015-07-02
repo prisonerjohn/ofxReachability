@@ -8,10 +8,10 @@
 
 #include "ofxReachability.h"
 
-#if defined(OFX_REACHABILITY_APPLE)
+#if defined(OFX_REACHABILITY_WIN32)
 
-#elif defined(OFX_REACHABILITY_WIN32)
-
+#elif defined(OFX_REACHABILITY_APPLE)
+    #include "ofxReachabilityImplApple.h"
 #else
     #include "ofxReachabilityImplPing.h"
 #endif
@@ -24,10 +24,10 @@ ofEvent<void> ofxReachability::connectedEvent;
 ofxReachability::ofxReachability()
 : _impl(NULL)
 {
-#if defined(OFX_REACHABILITY_APPLE)
+#if defined(OFX_REACHABILITY_WIN32)
     
-#elif defined(OFX_REACHABILITY_WIN32)
-    
+#elif defined(OFX_REACHABILITY_APPLE)
+    _impl = new ofxReachabilityImplApple();
 #else
     _impl = new ofxReachabilityImplPing();
 #endif
