@@ -11,7 +11,13 @@
 #include "ofMain.h"
 #include "ofxReachabilityImpl.h"
 
-struct ReachabilityWrapper;
+#include <objc/objc-runtime.h>
+
+#ifdef __OBJC__
+@class Reachability;
+#else
+typedef struct objc_object Reachability;
+#endif
 
 class ofxReachabilityImplApple
 : public ofThread
@@ -25,6 +31,6 @@ public:
     virtual void exit();
     
 private:
-    ReachabilityWrapper * _wrapper;
+    Reachability * _reach;
 };
 

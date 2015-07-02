@@ -12,55 +12,45 @@
 #import "Reachability.h"
 
 //--------------------------------------------------------------
-struct ReachabilityWrapper
-{
-    Reachability * reachability;
-};
-
-//--------------------------------------------------------------
 ofxReachabilityImplApple::ofxReachabilityImplApple()
 : ofxReachabilityImpl()
-, _wrapper(new ReachabilityWrapper)
 {
-    _wrapper->reachability = [Reachability reachabilityForInternetConnection];
+    _reach = [Reachability reachabilityForInternetConnection];
 }
 
 //--------------------------------------------------------------
 ofxReachabilityImplApple::~ofxReachabilityImplApple()
 {
-    if (_wrapper) {
-        [_wrapper->reachability release];
-    }
-    delete _wrapper;
+    [_reach release];
 }
 
 //--------------------------------------------------------------
 void ofxReachabilityImplApple::setup()
 {
-    _bConnected = _wrapper->reachability.isReachable;
+    _bConnected = _reach.isReachable;
     
-    _wrapper->reachability.reachableBlock = ^(Reachability * reachability) {
+    _reach.reachableBlock = ^(Reachability * reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _bConnected = true;
             ofNotifyEvent(ofxReachability::connectedEvent);
         });
     };
     
-    _wrapper->reachability.unreachableBlock = ^(Reachability * reachability) {
+    _reach.unreachableBlock = ^(Reachability * reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _bConnected = false;
             ofNotifyEvent(ofxReachability::disconnectedEvent);
         });
     };
     
-    [_wrapper->reachability startNotifier];
+    [_reach startNotifier];
 }
 
 //--------------------------------------------------------------
 void ofxReachabilityImplApple::exit()
 {
-    [_wrapper->reachability stopNotifier];
+    [_reach stopNotifier];
     
-    _wrapper->reachability.reachableBlock = nil;
-    _wrapper->reachability.unreachableBlock = nil;
+    _reach.reachableBlock = nil;
+    _reach.unreachableBlock = nil;
 }
