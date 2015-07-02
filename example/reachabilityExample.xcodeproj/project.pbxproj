@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		64A9AD221B050FB1002FD9FB /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD201B050FB1002FD9FB /* ofApp.cpp */; };
-		64A9AD251B050FFB002FD9FB /* ofxAvailability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD231B050FFB002FD9FB /* ofxAvailability.cpp */; };
+		64A9AD251B050FFB002FD9FB /* ofxReachability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64A9AD231B050FFB002FD9FB /* ofxReachability.cpp */; };
+		64E885EA1B0FA3B0001CD226 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E885E91B0FA3B0001CD226 /* SystemConfiguration.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -63,8 +64,9 @@
 /* Begin PBXFileReference section */
 		64A9AD201B050FB1002FD9FB /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		64A9AD211B050FB1002FD9FB /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
-		64A9AD231B050FFB002FD9FB /* ofxAvailability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxAvailability.cpp; path = ../src/ofxAvailability.cpp; sourceTree = "<group>"; };
-		64A9AD241B050FFB002FD9FB /* ofxAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxAvailability.h; path = ../src/ofxAvailability.h; sourceTree = "<group>"; };
+		64A9AD231B050FFB002FD9FB /* ofxReachability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxReachability.cpp; path = ../src/ofxReachability.cpp; sourceTree = "<group>"; };
+		64A9AD241B050FFB002FD9FB /* ofxReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxReachability.h; path = ../src/ofxReachability.h; sourceTree = "<group>"; };
+		64E885E91B0FA3B0001CD226 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -76,7 +78,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* billboardExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = billboardExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* availabilityExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = availabilityExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -94,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64E885EA1B0FA3B0001CD226 /* SystemConfiguration.framework in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -117,19 +120,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		64BFABB217CBF93700F5A9E3 /* ofxAvailability */ = {
+		64BFABB217CBF93700F5A9E3 /* ofxReachability */ = {
 			isa = PBXGroup;
 			children = (
 				64BFABB317CBF93D00F5A9E3 /* src */,
 			);
-			name = ofxAvailability;
+			name = ofxReachability;
 			sourceTree = "<group>";
 		};
 		64BFABB317CBF93D00F5A9E3 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				64A9AD231B050FFB002FD9FB /* ofxAvailability.cpp */,
-				64A9AD241B050FFB002FD9FB /* ofxAvailability.h */,
+				64A9AD231B050FFB002FD9FB /* ofxReachability.cpp */,
+				64A9AD241B050FFB002FD9FB /* ofxReachability.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -137,7 +140,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				64BFABB217CBF93700F5A9E3 /* ofxAvailability */,
+				64BFABB217CBF93700F5A9E3 /* ofxReachability */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64E885E91B0FA3B0001CD226 /* SystemConfiguration.framework */,
 				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -198,7 +202,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* billboardExampleDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* availabilityExampleDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* availabilityExample */ = {
+		E4B69B5A0A3A1756003C02F2 /* reachabilityExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "availabilityExample" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "reachabilityExample" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -238,9 +242,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = availabilityExample;
+			name = reachabilityExample;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* billboardExampleDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* availabilityExampleDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -250,7 +254,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "availabilityExample" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "reachabilityExample" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -271,7 +275,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* availabilityExample */,
+				E4B69B5A0A3A1756003C02F2 /* reachabilityExample */,
 			);
 		};
 /* End PBXProject section */
@@ -308,7 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				64A9AD251B050FFB002FD9FB /* ofxAvailability.cpp in Sources */,
+				64A9AD251B050FFB002FD9FB /* ofxReachability.cpp in Sources */,
 				64A9AD221B050FB1002FD9FB /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +390,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,6 +478,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -559,7 +565,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "availabilityExample" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "reachabilityExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -568,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "availabilityExample" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "reachabilityExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

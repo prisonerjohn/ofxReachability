@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxAvailability.h"
+#include "ofxReachability.h"
 
 class ofApp
 : public ofBaseApp
@@ -15,5 +15,5 @@ public:
     void onConnected();
     
 private:
-    ofxAvailability availability;
+    ofxReachability reachability;
 };

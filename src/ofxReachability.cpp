@@ -1,19 +1,19 @@
 //
-//  ofxAvailability.cpp
-//  ofxAvailability
+//  ofxReachability.cpp
+//  ofxReachability
 //
 //  Created by Elie Zananiri on 2015-05-14.
 //
 //
 
-#include "ofxAvailability.h"
+#include "ofxReachability.h"
 
 //--------------------------------------------------------------
-ofEvent<void> ofxAvailability::disconnectedEvent;
-ofEvent<void> ofxAvailability::connectedEvent;
+ofEvent<void> ofxReachability::disconnectedEvent;
+ofEvent<void> ofxReachability::connectedEvent;
 
 //--------------------------------------------------------------
-ofxAvailability::ofxAvailability()
+ofxReachability::ofxReachability()
 : ofThread()
 , _bConnected(false)
 , _pingAddress("www.google.com")
@@ -23,39 +23,39 @@ ofxAvailability::ofxAvailability()
 }
 
 //--------------------------------------------------------------
-ofxAvailability::~ofxAvailability()
+ofxReachability::~ofxReachability()
 {
     exit();
 }
 
 //--------------------------------------------------------------
-void ofxAvailability::setup()
+void ofxReachability::setup()
 {
     startThread();
 }
 
 //--------------------------------------------------------------
-void ofxAvailability::exit()
+void ofxReachability::exit()
 {
     waitForThread();
 }
 
 //--------------------------------------------------------------
-void ofxAvailability::threadedFunction()
+void ofxReachability::threadedFunction()
 {
     while (isThreadRunning()) {
         if (system(("ping -q -c5 " + _pingAddress + " > /dev/null 2>&1").c_str())) {
             // Not connected.
             if (_bConnected) {
                 _bConnected = false;
-                ofNotifyEvent(ofxAvailability::disconnectedEvent);
+                ofNotifyEvent(ofxReachability::disconnectedEvent);
             }
         }
         else {
             // Connected.
             if (!_bConnected) {
                 _bConnected = true;
-                ofNotifyEvent(ofxAvailability::connectedEvent);
+                ofNotifyEvent(ofxReachability::connectedEvent);
             }
         }
     
@@ -64,31 +64,31 @@ void ofxAvailability::threadedFunction()
 }
 
 //--------------------------------------------------------------
-bool ofxAvailability::isConnected() const
+bool ofxReachability::isConnected() const
 {
     return _bConnected;
 }
 
 //--------------------------------------------------------------
-void ofxAvailability::setPingAddress(const string& pingAddress)
+void ofxReachability::setPingAddress(const string& pingAddress)
 {
     _pingAddress = pingAddress;
 }
 
 //--------------------------------------------------------------
-const string& ofxAvailability::getPingAddress() const
+const string& ofxReachability::getPingAddress() const
 {
     return _pingAddress;
 }
 
 //--------------------------------------------------------------
-void ofxAvailability::setPingDelay(int pingDelay)
+void ofxReachability::setPingDelay(int pingDelay)
 {
     _pingDelay = pingDelay;
 }
 
 //--------------------------------------------------------------
-int ofxAvailability::getPingDelay() const
+int ofxReachability::getPingDelay() const
 {
     return _pingDelay;
 }

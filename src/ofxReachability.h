@@ -1,6 +1,6 @@
 //
-//  ofxAvailability.h
-//  ofxAvailability
+//  ofxReachability.h
+//  ofxReachability
 //
 //  Created by Elie Zananiri on 2015-05-14.
 //
@@ -10,12 +10,12 @@
 
 #include "ofMain.h"
 
-class ofxAvailability
+class ofxReachability
 : ofThread
 {
 public:
-    ofxAvailability();
-    ~ofxAvailability();
+    ofxReachability();
+    ~ofxReachability();
     
     void setup();
     void exit();

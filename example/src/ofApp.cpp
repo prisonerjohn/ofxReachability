@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "ofxAvailability.h"
+#include "ofxReachability.h"
 
 //--------------------------------------------------------------
 void ofApp::setup()
@@ -9,9 +9,9 @@ void ofApp::setup()
     ofSetBackgroundAuto(true);
     ofBackground(ofColor::black);
     
-    availability.setup();
-    ofAddListener(ofxAvailability::disconnectedEvent, this, &ofApp::onDisconnected);
-    ofAddListener(ofxAvailability::connectedEvent, this, &ofApp::onConnected);
+    reachability.setup();
+    ofAddListener(ofxReachability::disconnectedEvent, this, &ofApp::onDisconnected);
+    ofAddListener(ofxReachability::connectedEvent, this, &ofApp::onConnected);
 }
 
 //--------------------------------------------------------------
@@ -24,7 +24,7 @@ void ofApp::update()
 void ofApp::draw()
 {
     ofSetColor(255);
-    if (availability.isConnected()) {
+    if (reachability.isConnected()) {
         ofDrawBitmapString("CONNECTED!", 10, 20);
     }
     else {
