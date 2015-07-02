@@ -22,6 +22,8 @@ public:
     virtual void setup();
     virtual void exit();
     
+    void update(ofEventArgs& args);
+    
     void setPingAddress(const string& pingAddress);
     const string& getPingAddress() const;
     
@@ -34,4 +36,5 @@ protected:
 private:
     string _pingAddress;
     int _pingDelay;
+    bool _bConnectedTest;
 };

@@ -15,6 +15,7 @@ ofxReachabilityImplPing::ofxReachabilityImplPing()
 , ofxReachabilityImpl()
 , _pingAddress("www.google.com")
 , _pingDelay(1000)
+, _bConnectedTest(false)
 {
     
 }
@@ -29,12 +30,29 @@ ofxReachabilityImplPing::~ofxReachabilityImplPing()
 void ofxReachabilityImplPing::setup()
 {
     startThread();
+    
+    ofAddListener(ofEvents().update, this, &ofxReachabilityImplPing::update);
 }
 
 //--------------------------------------------------------------
 void ofxReachabilityImplPing::exit()
 {
+    ofRemoveListener(ofEvents().update, this, &ofxReachabilityImplPing::update);
+    
     waitForThread();
+}
+
+//--------------------------------------------------------------
+void ofxReachabilityImplPing::update(ofEventArgs& args)
+{
+    if (_bConnected && !_bConnectedTest) {
+        _bConnected = false;
+        ofNotifyEvent(ofxReachability::disconnectedEvent);
+    }
+    else if (!_bConnected && _bConnectedTest) {
+        _bConnected = true;
+        ofNotifyEvent(ofxReachability::connectedEvent);
+    }
 }
 
 //--------------------------------------------------------------
@@ -42,18 +60,10 @@ void ofxReachabilityImplPing::threadedFunction()
 {
     while (isThreadRunning()) {
         if (system(("ping -q -c5 " + _pingAddress + " > /dev/null 2>&1").c_str())) {
-            // Not connected.
-            if (_bConnected) {
-                _bConnected = false;
-                ofNotifyEvent(ofxReachability::disconnectedEvent);
-            }
+            _bConnectedTest = false;
         }
         else {
-            // Connected.
-            if (!_bConnected) {
-                _bConnected = true;
-                ofNotifyEvent(ofxReachability::connectedEvent);
-            }
+            _bConnectedTest = true;
         }
         
         sleep(_pingDelay);
