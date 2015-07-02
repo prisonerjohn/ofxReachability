@@ -9,9 +9,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxReachabilityImpl.h"
 
 class ofxReachability
-: ofThread
 {
 public:
     ofxReachability();
@@ -22,20 +22,11 @@ public:
     
     bool isConnected() const;
     
-    void setPingAddress(const string& pingAddress);
-    const string& getPingAddress() const;
-    
-    void setPingDelay(int pingDelay);
-    int getPingDelay() const;
+    ofxReachabilityImpl * getImpl();
     
     static ofEvent<void> disconnectedEvent;
     static ofEvent<void> connectedEvent;
     
-protected:
-    void threadedFunction();
-    
 private:
-    bool _bConnected;
-    string _pingAddress;
-    int _pingDelay;
+    ofxReachabilityImpl * _impl;
 };

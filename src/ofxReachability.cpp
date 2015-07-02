@@ -8,87 +8,60 @@
 
 #include "ofxReachability.h"
 
+#if defined(OFX_REACHABILITY_APPLE)
+
+#elif defined(OFX_REACHABILITY_WIN32)
+
+#else
+    #include "ofxReachabilityImplPing.h"
+#endif
+
 //--------------------------------------------------------------
 ofEvent<void> ofxReachability::disconnectedEvent;
 ofEvent<void> ofxReachability::connectedEvent;
 
 //--------------------------------------------------------------
 ofxReachability::ofxReachability()
-: ofThread()
-, _bConnected(false)
-, _pingAddress("www.google.com")
-, _pingDelay(1000)
+: _impl(NULL)
 {
+#if defined(OFX_REACHABILITY_APPLE)
     
+#elif defined(OFX_REACHABILITY_WIN32)
+    
+#else
+    _impl = new ofxReachabilityImplPing();
+#endif
 }
 
 //--------------------------------------------------------------
 ofxReachability::~ofxReachability()
 {
     exit();
+    
+    delete _impl;
+    _impl = NULL;
 }
 
 //--------------------------------------------------------------
 void ofxReachability::setup()
 {
-    startThread();
+    _impl->setup();
 }
 
 //--------------------------------------------------------------
 void ofxReachability::exit()
 {
-    waitForThread();
-}
-
-//--------------------------------------------------------------
-void ofxReachability::threadedFunction()
-{
-    while (isThreadRunning()) {
-        if (system(("ping -q -c5 " + _pingAddress + " > /dev/null 2>&1").c_str())) {
-            // Not connected.
-            if (_bConnected) {
-                _bConnected = false;
-                ofNotifyEvent(ofxReachability::disconnectedEvent);
-            }
-        }
-        else {
-            // Connected.
-            if (!_bConnected) {
-                _bConnected = true;
-                ofNotifyEvent(ofxReachability::connectedEvent);
-            }
-        }
-    
-        sleep(_pingDelay);
-    }
+    _impl->exit();
 }
 
 //--------------------------------------------------------------
 bool ofxReachability::isConnected() const
 {
-    return _bConnected;
+    return _impl->isConnected();
 }
 
 //--------------------------------------------------------------
-void ofxReachability::setPingAddress(const string& pingAddress)
+ofxReachabilityImpl * ofxReachability::getImpl()
 {
-    _pingAddress = pingAddress;
-}
-
-//--------------------------------------------------------------
-const string& ofxReachability::getPingAddress() const
-{
-    return _pingAddress;
-}
-
-//--------------------------------------------------------------
-void ofxReachability::setPingDelay(int pingDelay)
-{
-    _pingDelay = pingDelay;
-}
-
-//--------------------------------------------------------------
-int ofxReachability::getPingDelay() const
-{
-    return _pingDelay;
+    return _impl;
 }
